@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ config.get('TITLE') }}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-image: url('https://i.ytimg.com/vi/2ylRnJoxvn4/maxresdefault.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #fff;
+        }
+
+        .container {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 50px;
+        }
+
+        .list-group-item {
+            background-color: rgba(255, 255, 255, 0.2);
+            margin-top: 10px;
+        }
+
+        .list-group-item h4 {
+            color: #ffc107;
+        }
+
+        .btn-primary {
+            background-color: #17a2b8;
+            border-color: #17a2b8;
+        }
+
+        .btn-primary:hover {
+            background-color: #138496;
+            border-color: #138496;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">{{ config.get('TITLE') }}</h1>
+        <ul class="list-group">
+            {% for olympia in olympias %}
+                <li class="list-group-item">
+                    <p>{{ olympia.num }}</p>
+                    <h4>Campeão: {{ olympia.ano }}</h4>
+                    <a href="{{ url_for('webui.olympiaview', num=olympia.num) }}" class="btn btn-primary btn-sm">Detalhes</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
